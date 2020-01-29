@@ -17,3 +17,8 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+Route.get('/todos', 'TodoController.index')
+Route.get('/todos/:id', 'TodoController.show')
+Route.post('/todos', 'TodoController.create')
+Route.put('/todos/:id', 'TodoController.edit')
+Route.delete('/todos/:id', 'TodoController.delete')
