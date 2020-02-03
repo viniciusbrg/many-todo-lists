@@ -20,3 +20,10 @@ Factory.blueprint('App/Models/Todo', (faker) => {
     description: faker.sentence()
   }
 })
+
+Factory.blueprint('App/Models/Category', (faker) => {
+  return {
+    name: faker.sentence({ words: 4 }),
+    emoji: '🤓'
+  }
+})

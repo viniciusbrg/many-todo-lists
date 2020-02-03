@@ -22,3 +22,6 @@ Route.get('/todos/:id', 'TodoController.show')
 Route.post('/todos', 'TodoController.create')
 Route.put('/todos/:id', 'TodoController.edit')
 Route.delete('/todos/:id', 'TodoController.delete')
+
+Route.get('/categories', 'CategoryController.index')
+Route.post('/categories', 'CategoryController.create')
