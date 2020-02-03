@@ -8,7 +8,12 @@ class TodoSchema extends Schema {
     this.create('todos', (table) => {
       table.increments()
       table.timestamps()
-      table.string('name', 100)
+      table.integer('category_id')
+        .references('id')
+        .inTable('categories')
+        .unsigned()
+        .notNullable()
+      table.string('name', 100).notNullable()
       table.text('description')
     })
   }

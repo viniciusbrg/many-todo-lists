@@ -1,6 +1,7 @@
 'use strict'
 
 const Todo = use('App/Models/Todo')
+const Category = use('App/Models/Category')
 
 class TodoController {
   async index({ response }) {
@@ -16,7 +17,11 @@ class TodoController {
   }
 
   async create({ request, response }) {
-    const todoData = request.only(['name', 'description'])
+    const todoData = request.only(['name', 'description', 'category_id'])
+
+    if (!todoData.category_id) {
+      todoData.category_id = Category.getDefaultCategoryID()
+    }
 
     const createdTodo = await Todo.create(todoData)
 
