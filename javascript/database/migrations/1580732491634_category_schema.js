@@ -2,6 +2,7 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
+const Category = use('App/Models/Category')
 
 class CategorySchema extends Schema {
   up () {
@@ -10,6 +11,12 @@ class CategorySchema extends Schema {
       table.timestamps()
       table.string('name')
       table.string('emoji', 1)
+    })
+
+    Category.create({
+      id: Category.getDefaultCategoryID(),
+      name: 'Default',
+      emoji: '👋',
     })
   }
 
