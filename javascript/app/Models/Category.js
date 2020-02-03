@@ -7,6 +7,10 @@ class Category extends Model {
   static getDefaultCategoryID() {
     return 1
   }
+
+  todos() {
+    return this.hasMany('App/Models/Todo')
+  }
 }
 
 module.exports = Category

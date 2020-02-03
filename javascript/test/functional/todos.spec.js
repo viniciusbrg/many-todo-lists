@@ -90,3 +90,19 @@ test('it should be able to delete an existing todo', async ({ client, assert }) 
 
   assert.isNull(todo, 'the todo wasnt deleted from the database!');
 })
+
+test("it should create todos on default category if category_id isn't specified",
+  async ({ client, assert}) => {
+    const todoData = {
+      name: 'My new todo',
+      description: 'My todo description',
+    }
+
+    const response = await client.post('/todos').send(todoData).end()
+
+    response.assertStatus(201)
+
+    const createdTodoId = response.body.id
+    const todoInDatabase = await Todo.find(createdTodoId)
+    assert.equal(DEFAULT_CATEGORY_ID, todoInDatabase.category_id)
+})

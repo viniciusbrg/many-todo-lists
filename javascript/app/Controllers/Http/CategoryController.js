@@ -16,6 +16,15 @@ class CategoryController {
 
     return response.status(201).json(createdCategory)
   }
+
+  async show({ response, params }) {
+    const categoryId = params.id
+
+    const category = await Category.find(categoryId)
+    await category.load('todos')
+
+    return response.status(200).json(category)
+  }
 }
 
 module.exports = CategoryController
