@@ -4,12 +4,13 @@ import api from '../../services/api'
 function Sidebar() {
   const [categories, setCategories] = useState([])
   const [categoryInput, setCategoryInput] = useState('')
-  const [activeCategoryId, setActiveCategoryId] = useState(1)
+  const [activeCategory, setActiveCategory] = useState({})
 
   async function fetchCategories() {
     const categories = await api.get('/categories')
 
     setCategories(categories)
+    setActiveCategory(categories[0])
   }
 
   useEffect(function loadCategories() {
@@ -28,8 +29,8 @@ function Sidebar() {
     setCategoryInput('')
   }
 
-  function getClassName(categoryId) {
-    if (categoryId == activeCategoryId) {
+  function getClassName(category) {
+    if (category.id === activeCategory.id) {
       return 'active'
     }
     return ''
@@ -43,9 +44,9 @@ function Sidebar() {
         categories.map(category => {
           return (
             <h2
-              className={getClassName(category.id)}
+              className={getClassName(category)}
               key={category.id}
-              onClick={e => setActiveCategoryId(category.id)}
+              onClick={e => setActiveCategory(category)}
             >
               <span role="img" aria-label="category icon">{category.emoji}</span>
               {category.name}
