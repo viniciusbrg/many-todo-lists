@@ -33,11 +33,32 @@
   font-size: 1.5em;
 }
 
+.category-input {
+  display: flex;
+}
+
+.category-input input {
+  width: 100%;
+  outline: none;
+  background: none;
+  border: 1.2px solid rgba(0, 0, 255, 0.2) ;
+  color: white
+}
+
+.category-input button {
+  background: none;
+  border: none;
+  color: white;
+  outline: none;
+  font-size: 2em;
+}
+
 .main-content {
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 75%;
+  margin-left: 30px;
 }
 
 .create-todo-bar {

@@ -33,18 +33,21 @@ function Main() {
   }
 
   return (
-  <div className="main-content">
-    <div className="create-todo-bar">
-      <input placeholder="+ Add new todo" type="text" onChange={e => setNewTodo(e.target.value)}></input>
-      <button onClick={handleNewTodo}>+</button>
+    <div className="main-content">
+      <div className="create-todo-bar">
+        <input
+          placeholder="+ Add new todo"
+          type="text"
+          onChange={e => setNewTodo(e.target.value)} />
+        <button onClick={handleNewTodo}>+</button>
+      </div>
+      <div className="todo-list">
+        <h1 className="todo-category">Comidas</h1>
+        {
+          todos.map(todo => <TodoItem key={todo.id} name={todo.name}/>)
+        }
+      </div>
     </div>
-    <div className="todo-list">
-      <h1 className="todo-category">Comidas</h1>
-      {
-        todos.map(todo => <TodoItem key={todo.id} name={todo.name}/>)
-      }
-    </div>
-  </div>
   )
 }
 
