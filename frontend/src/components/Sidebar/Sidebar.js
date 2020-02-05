@@ -6,16 +6,17 @@ function Sidebar(props) {
   const [categoryInput, setCategoryInput] = useState('')
   const { activeCategory, setActiveCategory } = props
 
-  async function fetchCategories() {
-    const categories = await api.get('/categories')
-
-    setCategories(categories)
-    setActiveCategory(categories[0])
-  }
-
   useEffect(function loadCategories() {
+    async function fetchCategories() {
+      // array containing the categories from the api
+      const categories = await api.get('/categories')
+
+      setActiveCategory(categories[0])
+      setCategories(categories)
+    }
+
     fetchCategories()
-  }, [])
+  }, [setActiveCategory])
 
   async function handleNewCategory() {
     const categoryData = {
