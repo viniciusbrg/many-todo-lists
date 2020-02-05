@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import TodoItem from './TodoItem'
+import TodoList from './TodoList'
 import api from '../../services/api'
 
 function Main() {
@@ -34,19 +34,11 @@ function Main() {
 
   return (
     <div className="main-content">
-      <div className="create-todo-bar">
-        <input
-          placeholder="+ Add new todo"
-          type="text"
-          onChange={e => setNewTodo(e.target.value)} />
-        <button onClick={handleNewTodo}>+</button>
-      </div>
-      <div className="todo-list">
-        <h1 className="todo-category">Comidas</h1>
-        {
-          todos.map(todo => <TodoItem key={todo.id} name={todo.name}/>)
-        }
-      </div>
+      <TodoList
+        setNewTodo={setNewTodo}
+        handleNewTodo={handleNewTodo}
+        todos={todos}
+      />
     </div>
   )
 }
