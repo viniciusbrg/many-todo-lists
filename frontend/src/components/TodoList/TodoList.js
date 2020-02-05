@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import TodoItem from './TodoItem'
 
 function TodoList(props) {
-  const { setNewTodo, handleNewTodo, todos } = props
+  const { setNewTodo, handleNewTodo, todos, activeCategory } = props
 
   return (
     <>
@@ -14,7 +14,12 @@ function TodoList(props) {
         <button onClick={handleNewTodo}>+</button>
       </div>
       <div className="todo-list">
-        <h1 className="todo-category">Comidas</h1>
+        <h1 className="todo-category">
+          <span role="img" aria-label="current category emoji">
+            {activeCategory.emoji}
+          </span>
+          {activeCategory.name}
+        </h1>
         {
           todos.map(todo => <TodoItem key={todo.id} name={todo.name}/>)
         }

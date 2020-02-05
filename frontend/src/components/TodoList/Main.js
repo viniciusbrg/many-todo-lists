@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import TodoList from './TodoList'
 import api from '../../services/api'
 
-function Main() {
+function Main(props) {
+  const { activeCategory } = props
   const [todos, setTodos] = useState([])
   const [newTodo, setNewTodo] = useState('')
 
@@ -38,6 +39,7 @@ function Main() {
         setNewTodo={setNewTodo}
         handleNewTodo={handleNewTodo}
         todos={todos}
+        activeCategory={activeCategory}
       />
     </div>
   )

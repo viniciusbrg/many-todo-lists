@@ -101,6 +101,11 @@ button:active, button:hover, button:focus, button:visited {
   margin-bottom: 10px;
 }
 
+.todo-category span {
+  font-weight: 400;
+  margin-right: 7px;
+}
+
 .todo-item {
   margin-left: 45px;
   margin-top: 15px;
