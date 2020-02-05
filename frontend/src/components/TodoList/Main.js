@@ -7,15 +7,18 @@ function Main(props) {
   const [todos, setTodos] = useState([])
   const [newTodo, setNewTodo] = useState('')
 
-  async function loadTodos() {
-    const todos = await api.get('/todos')
-
-    setTodos(todos)
-  }
-
   useEffect(function fetchTodos() {
+    async function loadTodos() {
+      if (activeCategory.id) {
+        const apiResponse = await api.get(`/categories/${activeCategory.id}`)
+
+        const todos = apiResponse.todos
+        setTodos(todos)
+      }
+    }
+
     loadTodos()
-  }, [])
+  }, [activeCategory])
 
   async function createNewTodo(data) {
     const newTodo = await api.post('/todos', data)
@@ -27,7 +30,12 @@ function Main(props) {
       return
     }
 
-    const createdTodo = await createNewTodo({name: newTodo})
+    const todoData = {
+      name: newTodo,
+      category_id: activeCategory.id,
+    }
+
+    const createdTodo = await createNewTodo(todoData)
 
     setTodos([...todos, createdTodo])
     setNewTodo('')
