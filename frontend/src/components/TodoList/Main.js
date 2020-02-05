@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import TodoItem from './TodoItem'
-import api from '../services/api'
+import api from '../../services/api'
 
 function Main() {
   const [todos, setTodos] = useState([])
