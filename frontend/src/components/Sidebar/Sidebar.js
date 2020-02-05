@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import api from '../../services/api'
 
-function Sidebar() {
+function Sidebar(props) {
   const [categories, setCategories] = useState([])
   const [categoryInput, setCategoryInput] = useState('')
-  const [activeCategory, setActiveCategory] = useState({})
+  const { activeCategory, setActiveCategory } = props
 
   async function fetchCategories() {
     const categories = await api.get('/categories')
