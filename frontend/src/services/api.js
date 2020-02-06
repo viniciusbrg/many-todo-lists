@@ -30,5 +30,6 @@ const api = {}
 
 api.get = (route) => doFetch(buildUrl(API_URL, route), 'GET');
 api.post = (route, data) => doFetch(buildUrl(API_URL, route), 'POST', data);
+api.put = (route, data) => doFetch(buildUrl(API_URL, route), 'PUT', data);
 
 export default api;
