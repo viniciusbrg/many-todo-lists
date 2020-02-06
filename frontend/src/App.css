@@ -117,3 +117,53 @@ button:active, button:hover, button:focus, button:visited {
   flex-grow: 1;
   justify-content: flex-end;
 }
+
+.show-todo {
+  margin-left: 50px;
+}
+
+.show-todo button {
+  background: none;
+  border: none;
+  color: white;
+}
+
+.show-todo .return-button {
+  margin-top: 5px;
+  margin-bottom: 30px;
+  background: #f70000;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.show-todo .edit-button {
+  background: blue;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.show-todo .save-button {
+  background: blue;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.show-todo .remove-button {
+  background: red;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.show-todo .placeholder-description {
+  color: #b3b3b3;
+  font-weight: 400;
+}
+
+.show-todo .todo-content {
+  background: none;
+  color: white;
+  font-size: 1.3em;
+  border: none;
+}

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import TodoItem from './TodoItem'
 
 function TodoList(props) {
-  const { setNewTodo, handleNewTodo, todos, activeCategory } = props
+  const { setNewTodo, handleNewTodo,
+    todos, activeCategory, setActiveTodo } = props
 
   return (
-    <>
+    <div className="main-content">
       <div className="create-todo-bar">
         <input
           placeholder="+ Add new todo"
@@ -21,10 +22,16 @@ function TodoList(props) {
           {activeCategory.name}
         </h1>
         {
-          todos.map(todo => <TodoItem key={todo.id} name={todo.name}/>)
+          todos.map(todo => (
+            <TodoItem
+              key={todo.id}
+              name={todo.name}
+              onClick={e => setActiveTodo(todo)}
+            />
+          ))
         }
       </div>
-    </>
+    </div>
   )
 }
 
