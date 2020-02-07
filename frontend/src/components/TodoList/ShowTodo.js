@@ -25,13 +25,13 @@ function ShowTodo(props) {
     useState(activeTodo.description ? activeTodo.description : '')
   const [disableInputs, setDisableInputs] = useState(true)
 
-  function updateHandler() {
+  async function updateHandler() {
     const todoData = {
       name: todoName,
       description: todoDescription,
     }
 
-    console.log(todoData)
+    await api.put(`/todos/${activeTodo.id}`, todoData)
 
     setDisableInputs(true)
   }
